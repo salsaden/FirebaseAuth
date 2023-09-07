@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,6 +24,7 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -60,6 +62,7 @@ import com.example.firebasestorage.R
 @Composable
 fun SignupScreen(navController: NavHostController) {
     var mContext = LocalContext.current
+    var fullname by remember { mutableStateOf(TextFieldValue("")) }
     var username by remember { mutableStateOf(TextFieldValue("")) }
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
@@ -105,6 +108,18 @@ fun SignupScreen(navController: NavHostController) {
         //Textfields
         Column(modifier = Modifier.padding(20.dp)) {
 
+            OutlinedTextField(value = fullname ,
+                onValueChange = {fullname=it},
+                shape = CutCornerShape(5.dp),
+                modifier = Modifier
+                    .fillMaxWidth(),
+                label = { Text(text = "Fullname")},
+                placeholder = { Text(text = "Enter fullname")},
+                leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "")},
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+
             OutlinedTextField(value = username ,
                 onValueChange = {username=it},
                 shape = CutCornerShape(5.dp),
@@ -112,7 +127,7 @@ fun SignupScreen(navController: NavHostController) {
                     .fillMaxWidth(),
                 label = { Text(text = "Username")},
                 placeholder = { Text(text = "Enter username")},
-                leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "")},
+                leadingIcon = { Icon(imageVector = Icons.Default.AccountBox, contentDescription = "")},
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             )
 
@@ -156,12 +171,19 @@ fun SignupScreen(navController: NavHostController) {
             shape = CutCornerShape(5.dp)) {
             Text(text = "Register")
         }
+        Row() {
+            Text(text = "Have an account?",
+                fontSize = 15.sp)
 
-            Text(text = "Have account? Login",
+            Spacer(modifier = Modifier.width(5.dp))
+
+            Text(text = "Login",
                 modifier = Modifier.clickable {
                     navController.navigate(ROUT_LOGIN)
                 },
-                fontSize = 15.sp)
+                fontSize = 15.sp, color = Color.Blue)
+
+        }
 
     }
 }
