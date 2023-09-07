@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -19,15 +21,19 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.firebasestorage.LocationActivity
 import com.example.firebasestorage.navigation.ROUT_ABOUT
+import com.example.firebasestorage.navigation.ROUT_CONTACT
 import com.example.firebasestorage.navigation.ROUT_LOGIN
 import com.example.firebasestorage.navigation.ROUT_SIGNUP
+import com.example.firebasestorage.navigation.ROUT_UPLOAD
 
 @Composable
 fun HomeScreen(navController:NavHostController) {
@@ -68,6 +74,24 @@ fun HomeScreen(navController:NavHostController) {
         }) {
             Text(text = "About")
         }
+        Spacer(modifier = Modifier.height(40.dp))
+
+        Button(onClick = {
+            navController.navigate(ROUT_CONTACT)
+        }) {
+            Text(text = "Contact")
+        }
+        Spacer(modifier = Modifier.height(40.dp))
+
+        Button(onClick = {
+            navController.navigate(ROUT_UPLOAD)
+        },
+            colors = ButtonDefaults.buttonColors(Color.Green),
+            modifier = Modifier.padding(150.dp), shape = RectangleShape
+        ) {
+            Text(text = "Upload", fontWeight = FontWeight.Bold)
+        }
+
 
     }
 
