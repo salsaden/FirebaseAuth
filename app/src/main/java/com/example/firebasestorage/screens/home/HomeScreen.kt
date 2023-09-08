@@ -28,6 +28,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.firebasestorage.DetailsActivity
+import com.example.firebasestorage.InsertActivity
 import com.example.firebasestorage.LocationActivity
 import com.example.firebasestorage.navigation.ROUT_ABOUT
 import com.example.firebasestorage.navigation.ROUT_CONTACT
@@ -90,6 +92,15 @@ fun HomeScreen(navController:NavHostController) {
             modifier = Modifier.padding(150.dp), shape = RectangleShape
         ) {
             Text(text = "Upload", fontWeight = FontWeight.Bold)
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(onClick = {
+                         mContext.startActivity(Intent(mContext,InsertActivity::class.java))
+        },
+            colors = ButtonDefaults.buttonColors(Color.Green), shape = RectangleShape
+        ) {
+            Text(text = "Courses Page", fontWeight = FontWeight.Bold)
         }
 
 

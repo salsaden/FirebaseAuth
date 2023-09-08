@@ -62,7 +62,8 @@ import com.example.firebasestorage.R
 @Composable
 fun SignupScreen(navController: NavHostController) {
     var mContext = LocalContext.current
-    var fullname by remember { mutableStateOf(TextFieldValue("")) }
+    var firstname by remember { mutableStateOf(TextFieldValue("")) }
+    var lastname by remember { mutableStateOf(TextFieldValue("")) }
     var username by remember { mutableStateOf(TextFieldValue("")) }
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
@@ -107,17 +108,42 @@ fun SignupScreen(navController: NavHostController) {
 
         //Textfields
         Column(modifier = Modifier.padding(20.dp)) {
+            Row() {
 
-            OutlinedTextField(value = fullname ,
-                onValueChange = {fullname=it},
-                shape = CutCornerShape(5.dp),
-                modifier = Modifier
-                    .fillMaxWidth(),
-                label = { Text(text = "Fullname")},
-                placeholder = { Text(text = "Enter fullname")},
-                leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = "")},
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            )
+                OutlinedTextField(
+                    value = firstname,
+                    onValueChange = { firstname = it },
+                    shape = CutCornerShape(5.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    label = { Text(text = "Firstname") },
+                    placeholder = { Text(text = "Enter firstname") },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Person,
+                            contentDescription = ""
+                        )
+                    },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                )
+                Spacer(modifier = Modifier.width(5.dp))
+                OutlinedTextField(
+                    value = lastname,
+                    onValueChange = { lastname = it },
+                    shape = CutCornerShape(5.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    label = { Text(text = "Lastname") },
+                    placeholder = { Text(text = "Enter lastname") },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Person,
+                            contentDescription = ""
+                        )
+                    },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                )
+            }
             Spacer(modifier = Modifier.height(20.dp))
 
             OutlinedTextField(value = username ,
