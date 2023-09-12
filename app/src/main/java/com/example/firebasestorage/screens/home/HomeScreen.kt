@@ -59,7 +59,7 @@ fun HomeScreen(navController:NavHostController) {
                     mContext.startActivity(Intent.createChooser(shareIntent, "Share"))
 
 
-                }) {
+                })  {
                     Icon(imageVector = Icons.Filled.Share , contentDescription = "share")
                 }
                 IconButton(onClick = {

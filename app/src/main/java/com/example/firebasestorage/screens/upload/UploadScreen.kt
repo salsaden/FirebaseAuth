@@ -63,7 +63,7 @@ fun UploadScreen(navController: NavHostController){
         //TopAppBar -displays information and actions relating to the current screen and is placed at the top of the screen.
         TopAppBar(
             title = { Text("ImagePicker") },
-            colors = TopAppBarDefaults.largeTopAppBarColors(Color.Cyan),
+            colors = TopAppBarDefaults.largeTopAppBarColors(Color.Cyan ),
             navigationIcon = {
                 val mcontext = LocalContext.current
                 IconButton(onClick = {
